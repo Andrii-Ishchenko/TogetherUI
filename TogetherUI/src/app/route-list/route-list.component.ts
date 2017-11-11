@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Route} from '../route/route'
 import {RouteService} from '../route/route.service';
+import { of } from 'rxjs/observable/of';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class RouteListComponent implements OnInit {
   constructor( private routeService: RouteService) { }
 
   ngOnInit() {
-    this.routes = this.routeService.getRoutes();
+   this.routeService.getRoutesFromServer().subscribe(list=>{this.routes = list});
   }
 
 }

@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RouteComponent } from './route/route.component';
 import { RouteListComponent } from './route-list/route-list.component';
 
 import {RouteService} from './route/route.service'
+import { RouteMapperService} from './mappers/route-mapper.service';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,9 @@ import {RouteService} from './route/route.service'
     RouteListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule,
   ],
-  providers: [RouteService],
+  providers: [RouteService, RouteMapperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
