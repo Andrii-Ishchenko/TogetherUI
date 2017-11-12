@@ -112,6 +112,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd "!NODE_EXE!" ./node_modules/@angular/cli/bin/ng build --prod --env=prod --aot
   call :ExecuteCmd cp "%DEPLOYMENT_TARGET%"/dist "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd forfiles /p "%DEPLOYMENT_TARGET%"/dist /s /c "cmd /c echo @relpath"
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
