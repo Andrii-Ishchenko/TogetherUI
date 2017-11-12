@@ -98,8 +98,8 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 call :SelectNodeVersion
 
 :: 3. Install npm packages
-IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
-  pushd "%DEPLOYMENT_TARGET%"
+IF EXIST "%DEPLOYMENT_TARGET%\TogetherUI\package.json" (
+  pushd "%DEPLOYMENT_TARGET%"\TogetherUI
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error`
   popd
@@ -109,11 +109,10 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 echo Handling Angular build  
 echo "DEPLOYMENT_TARGET:" "%DEPLOYMENT_TARGET%"
 :: 4. Build ng app
-IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
-  pushd "%DEPLOYMENT_TARGET%"
+IF EXIST "%DEPLOYMENT_TARGET%\TogetherUI\package.json" (
+  pushd "%DEPLOYMENT_TARGET%"\TogetherUI
   call :ExecuteCmd "!NODE_EXE!" ./node_modules/@angular/cli/bin/ng build --prod --env=prod --aot
-  call :ExecuteCmd cp "%DEPLOYMENT_TARGET%"/dist "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd forfiles /p "%DEPLOYMENT_TARGET%"/dist /s /c "cmd /c echo @relpath"
+  call :ExecuteCmd cp "%DEPLOYMENT_TARGET%"/TogetherUI/dist "%DEPLOYMENT_TARGET%"
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
