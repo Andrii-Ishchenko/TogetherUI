@@ -105,8 +105,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
-# 4. Angular Prod Build
-if EXIST "%DEPLOYMENT_TARGET%\.angular-cli.json" ( 
+:: 4. Angular Prod Build
+IF EXIST "%DEPLOYMENT_TARGET%\.angular-cli.json" ( 
   pushd %DEPLOYMENT_TARGET%
   call ./node_modules/.bin/ng build --prod
   IF !ERRORLEVEL! NEQ 0 goto error
