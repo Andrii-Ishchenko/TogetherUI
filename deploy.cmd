@@ -101,14 +101,14 @@ call :SelectNodeVersion
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd !NPM_CMD! install --production
-  IF !ERRORLEVEL! NEQ 0 goto error
+  IF !ERRORLEVEL! NEQ 0 goto error`
   popd
 )
 
 :: 4. Angular Prod Build
 IF EXIST "%DEPLOYMENT_TARGET%\.angular-cli.json" ( 
   pushd %DEPLOYMENT_TARGET%
-  call ./node_modules/.bin/ng build --prod
+  call "./node_modules/.bin/ng" build --prod
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
