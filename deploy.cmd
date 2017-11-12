@@ -106,7 +106,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 )
 
 
-echo Handling Angular build   
+echo Handling Angular build  
+echo "%DEPLOYMENT_TARGET%"
 :: 4. Build ng app
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
