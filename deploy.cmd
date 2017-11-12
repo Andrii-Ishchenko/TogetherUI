@@ -99,7 +99,7 @@ call :SelectNodeVersion
 
 :: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\TogetherUI\package.json" (
-  pushd "%DEPLOYMENT_TARGET%"\TogetherUI
+  pushd "%DEPLOYMENT_TARGET%\TogetherUI"
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error`
   popd
@@ -110,9 +110,9 @@ echo Handling Angular build
 echo "DEPLOYMENT_TARGET:" "%DEPLOYMENT_TARGET%"
 :: 4. Build ng app
 IF EXIST "%DEPLOYMENT_TARGET%\TogetherUI\package.json" (
-  pushd "%DEPLOYMENT_TARGET%"\TogetherUI
+  pushd "%DEPLOYMENT_TARGET%\TogetherUI"
   call :ExecuteCmd "!NODE_EXE!" ./node_modules/@angular/cli/bin/ng build --prod --env=prod --aot
-  call :ExecuteCmd cp "%DEPLOYMENT_TARGET%"/TogetherUI/dist "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd cp "%DEPLOYMENT_TARGET%\TogetherUI\dist\." "%DEPLOYMENT_TARGET%" -r
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
