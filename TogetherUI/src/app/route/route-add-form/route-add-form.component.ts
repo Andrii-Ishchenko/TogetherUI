@@ -8,11 +8,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class RouteAddFormComponent implements OnInit {
 
-	routeName : string;
+  routeName : string;
+  routeType : string;
+  startDate : string;//todo : change
+  isPrivate : boolean;
 
 	constructor() { }
 
 	ngOnInit() {
 	}
+
+  addRoute(){
+    console.log(this.routeName + " " + this.routeType + " " + this.startDate + " " + this.isPrivate);
+  }
 
 }

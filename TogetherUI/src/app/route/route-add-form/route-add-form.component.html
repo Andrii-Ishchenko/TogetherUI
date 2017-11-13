@@ -7,9 +7,43 @@
 			<input type="text" class="form-control" placeholder="Route Name" [(ngModel)]="routeName" name="routeName" >	
 		</div>
 	</div>
+
 	<div class="form-group row">
-			<label for="routeName" class="col-sm-12 col-form-label">
-				{{routeName}}
-			</label>
+		<label for="routeType" class="col-sm-4 col-form-label">
+			Route Type
+		</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" placeholder="Route Type" [(ngModel)]="routeType" name="routeType" >	
+		</div>
 	</div>
+
+	<div class="form-group row">
+		<label for="startDate" class="col-sm-4 col-form-label">
+			Start Date
+		</label>
+		<div class="col-sm-8">
+			<input type="datetime" class="form-control"  [(ngModel)]="startDate" name="startDate" >	
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="isPrivate" class="col-sm-4">
+			Is Private
+		</label>
+		<div class="col-sm-8">
+				<div class="form-check">
+						<label class="form-check-label">
+								<input type="checkbox" class="form-check-input"  [(ngModel)]="isPrivate" name="isPrivate" >	
+								Visible only for you
+						</label>
+				</div>
+
+			
+		</div>
+	</div>
+
+	<div class="float-right">
+			<button class="btn btn-primary" (click)="addRoute()">Create Route</button>
+	</div>
+
 </form>
