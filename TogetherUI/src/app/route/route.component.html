@@ -1,3 +1,12 @@
-<li class="list-group-item">
-  #{{route.id}} - {{ route.passengers}} - {{route.routeType}}  - {{route.startDate}}
-</li>
+<div class="card mb-2">
+	<div class="card-body">
+		<div class="card-title">
+			<span>{{route.startDate | date:"medium"}}</span>
+			<span class="text-muted float-right"> #{{route.id}}</span>
+		</div>
+		<h6 class="card-subtitle mb-2 text-muted">{{ route.routeType}}</h6>
+		<p class="card-text">Passengers: {{ route.passengers}} </p>
+	</div>
+</div>
+
+
