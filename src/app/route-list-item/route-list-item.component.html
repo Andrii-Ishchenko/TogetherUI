@@ -3,9 +3,20 @@
       <h6 class="mb-1">Type: {{routeListItem.RouteType}}</h6>
       <small>Start: {{routeListItem.StartDate | date:"hh:mm:ss dd/M/y"}}</small>
     </div>
-    <p class="mb-1">Passengers: {{routeListItem.Passengers.length}}/{{routeListItem.MaxPassengers}}</p>
-    <ul >
-        <li *ngFor="let passenger of routeListItem.Passengers">{{passenger.FirstName}} {{passenger.LastName}}</li>
-    </ul>
+    <p class="mb-1">Passengers: {{routeListItem.Passengers.length}}/{{routeListItem.MaxPassengers}}</p>   
+    <div class="passenger-row h6">
+      
+      <span *ngFor="let passenger of routeListItem.Passengers; let i = index" 
+            class="badge badge-pill badge-warning"  
+            data-toggle="tooltip" 
+            data-placement="bottom" 
+            tooltip="{{passenger.FirstName}} {{passenger.LastName}}">{{i}}</span>
+
+      <span *ngFor="let ind of freePlacesIndexes" 
+            class="badge badge-pill badge-success"
+            data-toggle="tooltip" 
+            data-placement="bottom" 
+            tooltip="This place is free! Click to join.">{{ind}}</span>
+    </div>
     <small>RoutePoints Count: {{routeListItem.RoutePoints.length}}</small>
 </a>

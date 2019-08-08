@@ -10,9 +10,23 @@ export class RouteListItemComponent implements OnInit {
 
   @Input() routeListItem: RouteListItem;
 
+  freePlacesIndexes: Array<number>;
+
   constructor() { }
 
   ngOnInit() {
+    this.generateFreePlacesArray();
+  }
+
+  generateFreePlacesArray() {
+    const count = this.routeListItem.MaxPassengers - this.routeListItem.Passengers.length;
+    const occupiedCount = this.routeListItem.Passengers.length;
+    this.freePlacesIndexes = new Array<number>(count);
+
+    for (let i = 0; i < count; i++) {
+      this.freePlacesIndexes[i] = occupiedCount + i;
+    }
+
   }
 
 }
