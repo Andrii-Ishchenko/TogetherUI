@@ -1,0 +1,11 @@
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h6 class="mb-1">Type: {{routeListItem.RouteType}}</h6>
+      <small>Start: {{routeListItem.StartDate | date:"hh:mm:ss dd/M/y"}}</small>
+    </div>
+    <p class="mb-1">Passengers: {{routeListItem.Passengers.length}}/{{routeListItem.MaxPassengers}}</p>
+    <ul >
+        <li *ngFor="let passenger of routeListItem.Passengers">{{passenger.FirstName}} {{passenger.LastName}}</li>
+    </ul>
+    <small>RoutePoints Count: {{routeListItem.RoutePoints.length}}</small>
+</a>
