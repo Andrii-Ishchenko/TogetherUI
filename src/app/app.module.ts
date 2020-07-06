@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { RouteListComponent } from './route-list/route-list.component';
 import { RouteListItemComponent } from './route-list-item/route-list-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthNavbarComponent } from './auth-navbar/auth-navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RouteListComponent,
-    RouteListItemComponent
+    RouteListItemComponent,
+    AuthNavbarComponent
   ],
   imports: [
     BrowserModule,
