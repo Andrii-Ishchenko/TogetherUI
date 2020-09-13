@@ -10,13 +10,13 @@
             class="badge badge-pill badge-warning"  
             data-toggle="tooltip" 
             data-placement="bottom" 
-            tooltip="{{passenger.FirstName}} {{passenger.LastName}}">{{i}}</span>
+            title="{{passenger.FirstName}} {{passenger.LastName}}">{{i}}</span>
 
       <span *ngFor="let ind of freePlacesIndexes" 
             class="badge badge-pill badge-success"
             data-toggle="tooltip" 
             data-placement="bottom" 
-            tooltip="This place is free! Click to join.">{{ind}}</span>
+            title="This place is free! Click to join.">{{ind}}</span>
     </div>
     <small>RoutePoints Count: {{routeListItem.RoutePoints.length}}</small>
 </a>

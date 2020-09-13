@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {RouteListItem} from '../models/route-list-item';
+import {RouteListItem} from '../../models/route-list-item';
 
 @Component({
   selector: 'app-route-list-item',
