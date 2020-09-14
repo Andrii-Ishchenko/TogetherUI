@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/services/user.service';
 import { Credentials } from '../../models/credentials';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +12,7 @@ export class LoginFormComponent implements OnInit {
 
   credentials: Credentials = { email: '', password: '' };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,12 @@ export class LoginFormComponent implements OnInit {
   login() {
     this.userService
       .login(this.credentials.email, this.credentials.password)
-      .subscribe(() => console.log('login successfull'));
+      .subscribe(
+        result => {
+          if (result) {
+             this.router.navigate(['']);
+          }
+        });
   }
 
 }
