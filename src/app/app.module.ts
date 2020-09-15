@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountModule } from './account/account.module';
 import { MainModule } from './main/main.module';
+import { RouteDetailModule } from './route-detail/route-detail.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MainModule } from './main/main.module';
     BrowserModule,
     AccountModule,
     MainModule,
+    RouteDetailModule,
     HttpClientModule,
     TooltipModule.forRoot(),
     AppRoutingModule,

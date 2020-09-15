@@ -3,7 +3,7 @@ import { RouteListPassenger } from './route-list-passenger';
 
 export class RouteListItem {
 
-    constructor(public Id: number,
+    constructor(public id: number,
                 public creatorId: string,
                 public creatorFirstName: string,
                 public creatorLastName: string,

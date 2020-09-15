@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {RouteListItem} from '../../models/route-list-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-list-item',
@@ -12,7 +13,7 @@ export class RouteListItemComponent implements OnInit {
 
   freePlacesIndexes: Array<number>;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.generateFreePlacesArray();
@@ -26,7 +27,5 @@ export class RouteListItemComponent implements OnInit {
     for (let i = 0; i < count; i++) {
       this.freePlacesIndexes[i] = occupiedCount + i;
     }
-
   }
-
 }

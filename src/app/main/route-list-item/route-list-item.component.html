@@ -1,13 +1,13 @@
-<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+<a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 mb-2">
       <span class="mr-2 small font-weight-bold">{{routeListItem.routeType}}</span>
-      <span class="mr-2 small">{{routeListItem.startDate | date:"hh:mm dd.M.y"}}</span>
-      <span class="mr-2 small badge badge-pill badge-success">{{routeListItem.passengers.length}}/{{routeListItem.maxPassengers}}</span>   
+      <span class="mr-auto small">{{routeListItem.startDate | date:"hh:mm dd.M.y"}}</span>
+      <span class="small badge badge-pill badge-success">{{routeListItem.passengers.length}}/{{routeListItem.maxPassengers}}</span>   
     </div>
     
     <div class="mb-1">
       <a href="#">
-        <span class="small">{{routeListItem.creatorFirstName}} {{routeListItem.creatorLastName}}</span>
+        <span class="small text-secondary">{{routeListItem.creatorFirstName}} {{routeListItem.creatorLastName}}</span>
       </a>
     </div>
 
@@ -29,5 +29,9 @@
         </span>
       </a>
     </div>
-    <span class="small">RoutePoints Count: {{routeListItem.routePoints.length}}</span>
+    <div class="d-flex w-100 mb-2">
+      <span class="mr-auto">RP Count: {{routeListItem.routePoints.length}}</span>     
+      <a  [routerLink]="['/route', routeListItem.id]">Details</a>
+    </div>
+
 </a>
