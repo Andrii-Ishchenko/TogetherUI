@@ -1,7 +1,7 @@
 export class RouteListPassenger {
-    constructor(public PassengerId: number,
-                public UserId: number,
-                public FirstName: string,
-                public LastName: string) {
+    constructor(public passengerId: number,
+                public userId: number,
+                public firstName: string,
+                public lastName: string) {
     }
 }

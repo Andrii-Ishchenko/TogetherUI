@@ -18,7 +18,9 @@ export class RouteListComponent implements OnInit {
   ngOnInit() {
     this.http.get<RouteListItem[]>(this.getRoutesPath)
       .subscribe(
-        (list: RouteListItem[]) => this.routeListItems = list
+        (list: RouteListItem[]) => {
+          this.routeListItems = list as RouteListItem[];
+        }
       );
   }
 }

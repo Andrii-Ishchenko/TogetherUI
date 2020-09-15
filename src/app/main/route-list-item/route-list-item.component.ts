@@ -19,8 +19,8 @@ export class RouteListItemComponent implements OnInit {
   }
 
   generateFreePlacesArray() {
-    const count = this.routeListItem.MaxPassengers - this.routeListItem.Passengers.length;
-    const occupiedCount = this.routeListItem.Passengers.length;
+    const count = this.routeListItem.maxPassengers - this.routeListItem.passengers.length;
+    const occupiedCount = this.routeListItem.passengers.length;
     this.freePlacesIndexes = new Array<number>(count);
 
     for (let i = 0; i < count; i++) {

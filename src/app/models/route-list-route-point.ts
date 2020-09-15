@@ -1,13 +1,13 @@
 export class RouteListRoutePoint {
-    constructor(public Id: number,
-                public RouteId: number,
-                public CreatorId: number,
-                public Name: string,
-                public OrderNumber: number,
-                public Longitude: number,
-                public Latitude: number,
-                public CreatedDate: Date,
-                public CreatorFirstName: string,
-                public CreatorLastName: string) {
+    constructor(public id: number,
+                public routeId: number,
+                public creatorId: number,
+                public name: string,
+                public orderNumber: number,
+                public longitude: number,
+                public latitude: number,
+                public createdDate: Date,
+                public creatorFirstName: string,
+                public creatorLastName: string) {
     }
 }
