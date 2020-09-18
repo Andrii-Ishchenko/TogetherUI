@@ -12,18 +12,35 @@ import { UserProfile } from 'src/app/models/user-profile';
 export class UserService {
 
   baseUrl = '';
-  private loggedIn = false;
+  // tslint:disable-next-line:variable-name
+  private _loggedIn = false;
+  public get loggedIn() {
+    return this._loggedIn;
+  }
 
-  private authNavStatusSource = new BehaviorSubject<boolean>(false);
-  authNavStatus$ = this.authNavStatusSource.asObservable();
+  private authNavStatusSource;
+  authNavStatus$;
 
-  private userProfileSource = new Subject<UserProfile>();
-  userProfile$ = this.userProfileSource.asObservable();
+  private userProfileSource;
+  userProfile$;
   userProfile: UserProfile;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
-    this.loggedIn = !!localStorage.getItem('auth_key');
+    this._loggedIn = !!localStorage.getItem('auth_token');
+    console.log('Logged In Status: ' + this.loggedIn);
+
+    this.authNavStatusSource = new BehaviorSubject<boolean>(this._loggedIn);
+    this.authNavStatus$ = this.authNavStatusSource.asObservable();
+
+    if (this._loggedIn) {
+      this.userProfile = JSON.parse(localStorage.getItem('profile'));
+    }
+
+    this.userProfileSource = new BehaviorSubject<UserProfile>(this.userProfile);
+    this.userProfile$ = this.userProfileSource.asObservable();
+
     this.baseUrl = configService.getBaseUri();
+
   }
 
   login(username: string, password: string) {
@@ -38,7 +55,7 @@ export class UserService {
             .pipe(
               map((data: any) => {
                 localStorage.setItem('auth_token', data.token);
-                this.loggedIn = true;
+                this._loggedIn = true;
                 this.authNavStatusSource.next(true);
                 return true;
               }),
@@ -59,6 +76,7 @@ export class UserService {
             .pipe(
               map((data: UserProfile) => {
                 const up = data as UserProfile;
+                localStorage.setItem('profile', JSON.stringify(data));
                 this.userProfile = up;
                 this.userProfileSource.next(up);
                 return true;
@@ -68,7 +86,8 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('auth_token');
-    this.loggedIn = false;
+    localStorage.removeItem('profile');
+    this._loggedIn = false;
     this.authNavStatusSource.next(false);
   }
 
