@@ -12,11 +12,11 @@
     </div>
 
     <div class="passenger-row h6 mb-2">   
-      <span *ngFor="let passenger of routeListItem.Passengers; let i = index" 
+      <span *ngFor="let passenger of routeListItem.passengers; let i = index" 
             class="badge badge-pill badge-warning mr-1"  
             data-toggle="tooltip" 
             data-placement="bottom" 
-            title="{{passenger.firstName}} {{passenger.LastName}}">
+            title="{{passenger.firstName}} {{passenger.lastName}}">
             {{i}}
       </span>
 
