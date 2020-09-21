@@ -5,13 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
 
-  baseUri: string;
+  private baseUri: string;
+  private apiUri: string;
 
   constructor() {
     this.baseUri = 'https://localhost:5001';
+    this.apiUri = `${this.baseUri}/api`;
   }
 
   getBaseUri() {
     return this.baseUri;
+  }
+
+  getApiUri() {
+    return this.apiUri;
   }
 }

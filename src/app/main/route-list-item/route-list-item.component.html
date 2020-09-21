@@ -6,9 +6,7 @@
     </div>
     
     <div class="mb-1">
-      <a href="#">
-        <span class="small text-secondary">{{routeListItem.creatorFirstName}} {{routeListItem.creatorLastName}}</span>
-      </a>
+      
     </div>
 
     <div class="passenger-row h6 mb-2">   
@@ -29,8 +27,12 @@
         </span>
       </a>
     </div>
+
     <div class="d-flex w-100 mb-1">
-      <span class="mr-auto">RP: {{routeListItem.routePoints.length}}</span>     
+      <span class="mr-2">RP: {{routeListItem.routePoints.length}}</span>
+      <a class="mr-auto" href="#">
+        <span class="small text-secondary">{{routeListItem.creatorFirstName}} {{routeListItem.creatorLastName}}</span>
+      </a>     
       <a  [routerLink]="['/route', routeListItem.id]">Details</a>
     </div>
 

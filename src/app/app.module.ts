@@ -22,7 +22,6 @@ import { RouteDetailModule } from './route-detail/route-detail.module';
     BrowserModule,
     AccountModule,
     MainModule,
-    RouteDetailModule,
     HttpClientModule,
     TooltipModule.forRoot(),
     AppRoutingModule,

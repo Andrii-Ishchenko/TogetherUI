@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouteDetialComponent } from './route-detial/route-detial.component';
+import { RouteDetailComponent } from './route-detail/route-detail.component';
+import { RouteDetailRoutingModule } from './route-detail-routing.module';
 
 
 
 @NgModule({
-  declarations: [RouteDetialComponent],
+  declarations: [RouteDetailComponent],
   imports: [
     CommonModule
   ],
   exports: [
-    RouteDetialComponent
+    RouteDetailComponent,
+    RouteDetailRoutingModule
   ]
 })
 export class RouteDetailModule { }
