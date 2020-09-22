@@ -1,19 +1,42 @@
-<div class="card" style="width: 18rem;" *ngIf="routeLoaded else routeNotLoaded">
-    <div class="card-body">
-      <h5 class="card-title">{{route.name}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{route.startDate}}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">{{route.routeType}}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">{{route.passengers.length}}/{{route.maxPassengers}}</h6>
-      <p class="card-text">Text</p>
+ <div class="container-fluid mt-2 mx-0">
+
+  <div class="row" *ngIf="routeLoaded else routeNotLoaded">
+    <div class="col-md-4">
+      <div class="card"  >
+        <div class="card-body">
+          <h5 class="card-title text-center">{{route.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{route.startDate}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{route.routeType}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{route.passengers.length}}/{{route.maxPassengers}}</h6>
+          <p class="card-text">Text</p>
+        </div>
+      </div>
     </div>
-</div>
-
-<ng-template #routeNotLoaded>
-  <div>
-    Loading route...
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Passengers
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let p of route.passengers">{{p.firstName}} {{p.lastName}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Route Points
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let rp of route.routePoints">{{rp.name}}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-<ng-template>
 
-
-
- 
+<!--   <ng-template #routeNotLoaded>
+    <div class="row">
+      Loading route...
+    </div>
+  <ng-template> -->
+ </div>

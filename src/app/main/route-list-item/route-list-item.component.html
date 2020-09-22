@@ -4,10 +4,18 @@
       <span class="mr-auto small">{{routeListItem.startDate | date:"hh:mm dd.M.y"}}</span>
       <span class="small badge badge-pill badge-success">{{routeListItem.passengers.length}}/{{routeListItem.maxPassengers}}</span>   
     </div>
-    
-    <div class="mb-1">
-      
+    <div class="mb-1" *ngIf="routeListItem.routePoints.length > 1">
+        <span class="small text-muted">
+          {{from.name}}
+        </span>
+        <span>
+          -
+        </span>
+        <span class="small text-muted">
+          {{to.name}}
+        </span>
     </div>
+
 
     <div class="passenger-row h6 mb-2">   
       <span *ngFor="let passenger of routeListItem.passengers; let i = index" 
@@ -29,11 +37,10 @@
     </div>
 
     <div class="d-flex w-100 mb-1">
-      <span class="mr-2">RP: {{routeListItem.routePoints.length}}</span>
       <a class="mr-auto" href="#">
         <span class="small text-secondary">{{routeListItem.creatorFirstName}} {{routeListItem.creatorLastName}}</span>
       </a>     
-      <a  [routerLink]="['/route', routeListItem.id]">Details</a>
+      <a [routerLink]="['/route', routeListItem.id]">Details</a>
     </div>
 
 </a>

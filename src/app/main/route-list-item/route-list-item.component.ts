@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {RouteListItem} from '../../models/route-list-item';
 import { Router } from '@angular/router';
+import { RouteListRoutePoint } from 'src/app/models/route-list-route-point';
 
 @Component({
   selector: 'app-route-list-item',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 export class RouteListItemComponent implements OnInit {
 
   @Input() routeListItem: RouteListItem;
+  from: RouteListRoutePoint;
+  to: RouteListRoutePoint;
 
   freePlacesIndexes: Array<number>;
 
@@ -17,6 +20,10 @@ export class RouteListItemComponent implements OnInit {
 
   ngOnInit() {
     this.generateFreePlacesArray();
+    if (this.routeListItem.routePoints.length > 1) {
+      this.from = this.routeListItem.routePoints.reduce((prev, curr) => (prev.orderNumber <= curr.orderNumber) ? prev : curr);
+      this.to = this.routeListItem.routePoints.reduce((prev, curr) => (prev.orderNumber > curr.orderNumber) ? prev : curr);
+    }
   }
 
   generateFreePlacesArray() {
