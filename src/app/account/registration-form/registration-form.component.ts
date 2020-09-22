@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
+import { RegisterModel } from 'src/app/models/register-model';
 
 @Component({
   selector: 'app-registration-form',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationFormComponent implements OnInit {
 
-  constructor() { }
+  registerModel: RegisterModel = {email: '', password: '', firstname: '', lastname: ''};
+  submitted = false;
+  error;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+
+  }
+
+  register() {
+    this.submitted = true;
+
+    this.userService
+      .register(this.registerModel)
+      .subscribe(
+        response => {
+          this.submitted = false;
+        },
+        error => {
+          this.submitted = false;
+          this.error = error.message;
+          console.dir(error);
+        }
+      );
+
   }
 
 }

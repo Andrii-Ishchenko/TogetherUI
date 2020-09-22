@@ -5,6 +5,7 @@ import { RegisterModel } from 'src/app/models/register-model';
 import { ConfigService } from '../utils/config.service';
 import {map, tap, switchMap} from 'rxjs/operators';
 import { UserProfile } from 'src/app/models/user-profile';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,14 @@ export class UserService {
     this.authNavStatusSource.next(false);
   }
 
-  register(email: string, password: string, firstname: string, lastname: string): Observable<RegisterModel> {
-    return null;
+  register(model: RegisterModel) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+
+    return this.http
+          .post(
+              this.baseUrl + '/accounts',
+              model,
+              { headers }
+          );
   }
 }
